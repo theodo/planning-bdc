@@ -1,0 +1,296 @@
+.input {
+  position: relative;
+  padding: 2rem 0; }
+  .input.withIcon {
+    margin-left: 4.8rem; }
+
+.icon {
+  position: absolute;
+  top: 1.6rem;
+  left: -4.8rem;
+  display: block;
+  width: 4.8rem;
+  height: 4.8rem;
+  font-size: 2.4rem !important;
+  line-height: 4.8rem !important;
+  color: rgba(0, 0, 0, 0.26);
+  text-align: center;
+  transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+
+.inputElement {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 0;
+  font-size: 1.6rem;
+  color: #212121;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  outline: none; }
+  .inputElement:focus ~ .bar:before, .inputElement:focus ~ .bar:after {
+    width: 50%; }
+  .inputElement:focus ~ .label:not(.fixed) {
+    color: #3f51b5; }
+  .inputElement:focus ~ .label > .required {
+    color: #de3226; }
+  .inputElement:focus ~ .hint {
+    opacity: 1; }
+  .inputElement:focus ~ .icon {
+    color: #3f51b5; }
+  .inputElement:focus ~ .label:not(.fixed), .inputElement.filled ~ .label:not(.fixed), .inputElement[type="date"] ~ .label:not(.fixed), .inputElement[type="time"] ~ .label:not(.fixed) {
+    top: 0.6rem;
+    font-size: 1.2rem; }
+  .inputElement.filled ~ .label.fixed, .inputElement.filled ~ .hint {
+    display: none; }
+
+.label {
+  position: absolute;
+  top: 3.2rem;
+  left: 0;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: rgba(0, 0, 0, 0.26);
+  pointer-events: none;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.35s;
+  transition-property: top, font-size, color; }
+  .label.fixed ~ .hint {
+    display: none; }
+
+.hint {
+  position: absolute;
+  top: 3.2rem;
+  left: 0;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  color: rgba(0, 0, 0, 0.26);
+  pointer-events: none;
+  opacity: 0;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.35s;
+  transition-property: opacity; }
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%; }
+  .bar:before, .bar:after {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.2s;
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    content: "";
+    background-color: #3f51b5;
+    transition-property: width, background-color; }
+  .bar:before {
+    left: 50%; }
+  .bar:after {
+    right: 50%; }
+
+.error, .counter {
+  margin-bottom: -2rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: #de3226; }
+
+.counter {
+  position: absolute;
+  right: 0;
+  color: rgba(0, 0, 0, 0.26); }
+
+.disabled > .inputElement {
+  color: rgba(0, 0, 0, 0.26);
+  border-bottom-style: dotted; }
+
+.errored {
+  padding-bottom: 0; }
+  .errored > .inputElement {
+    margin-top: 1px;
+    border-bottom-color: #de3226; }
+  .errored > .counter, .errored > .label {
+    color: #de3226; }
+  .errored > .label > .required {
+    color: #de3226; }
+
+.hidden {
+  display: none; }
+.ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  pointer-events: none;
+  background-color: currentColor;
+  border-radius: 50%;
+  transform-origin: 50% 50%; }
+
+.rippleWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none; }
+
+.ripple {
+  transition-duration: 800ms; }
+  .ripple.rippleRestarting {
+    opacity: 0.3;
+    transition-property: none; }
+  .ripple.rippleActive {
+    opacity: 0.3;
+    transition-property: transform; }
+  .ripple:not(.rippleActive):not(.rippleRestarting) {
+    opacity: 0;
+    transition-property: opacity, transform; }
+.button {
+  position: relative; }
+
+.raised, .flat, .floating, .toggle {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  position: relative;
+  display: inline-block;
+  height: 3.6rem;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+  .raised::-moz-focus-inner, .flat::-moz-focus-inner, .floating::-moz-focus-inner, .toggle::-moz-focus-inner {
+    border: 0; }
+  .raised > span:not([data-react-toolbox="tooltip"]), .flat > span:not([data-react-toolbox="tooltip"]), .floating > span:not([data-react-toolbox="tooltip"]), .toggle > span:not([data-react-toolbox="tooltip"]) {
+    display: inline-block;
+    line-height: 3.6rem;
+    vertical-align: middle; }
+  .raised > svg, .flat > svg, .floating > svg, .toggle > svg {
+    display: inline-block;
+    width: 1em;
+    height: 3.6rem;
+    font-size: 120%;
+    vertical-align: middle;
+    fill: currentColor; }
+  .raised > *, .flat > *, .floating > *, .toggle > * {
+    pointer-events: none; }
+  .raised > .rippleWrapper, .flat > .rippleWrapper, .floating > .rippleWrapper, .toggle > .rippleWrapper {
+    overflow: hidden; }
+  [disabled].raised, [disabled].flat, [disabled].floating, [disabled].toggle {
+    color: rgba(0, 0, 0, 0.26);
+    pointer-events: none;
+    cursor: auto; }
+
+.raised, .flat {
+  min-width: 9rem;
+  padding: 0 1.2rem;
+  border-radius: 0.2rem; }
+  .raised .icon, .flat .icon {
+    margin-right: 0.6rem;
+    font-size: 120%;
+    vertical-align: middle; }
+  .raised > svg, .flat > svg {
+    margin-right: 0.5rem; }
+
+[disabled].raised, [disabled].floating {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.12); }
+
+.raised:active, .floating:active {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
+
+.raised:focus:not(:active), .floating:focus:not(:active) {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36); }
+
+.raised {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+
+.flat {
+  background: transparent; }
+
+.floating {
+  width: 5.6rem;
+  height: 5.6rem;
+  font-size: 2.4rem;
+  border-radius: 50%;
+  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24); }
+  .floating .icon {
+    line-height: 5.6rem; }
+  .floating > .rippleWrapper {
+    border-radius: 50%; }
+  .floating.mini {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.77778rem; }
+    .floating.mini .icon {
+      line-height: 4rem; }
+
+.toggle {
+  width: 3.6rem;
+  background: transparent;
+  border-radius: 50%; }
+  .toggle > .icon, .toggle svg {
+    font-size: 2rem;
+    line-height: 3.6rem;
+    vertical-align: middle; }
+  .toggle > .rippleWrapper {
+    border-radius: 50%; }
+
+.neutral:not([disabled]).raised, .neutral:not([disabled]).floating {
+  color: #212121;
+  background-color: white; }
+
+.neutral:not([disabled]).flat, .neutral:not([disabled]).toggle {
+  color: #212121; }
+  .neutral:not([disabled]).flat:focus:not(:active), .neutral:not([disabled]).toggle:focus:not(:active) {
+    background: rgba(33, 33, 33, 0.2); }
+
+.neutral:not([disabled]).flat:hover {
+  background: rgba(33, 33, 33, 0.2); }
+
+.neutral:not([disabled]).inverse.raised, .neutral:not([disabled]).inverse.floating {
+  color: white;
+  background-color: #212121; }
+
+.neutral:not([disabled]).inverse.flat, .neutral:not([disabled]).inverse.toggle {
+  color: white; }
+  .neutral:not([disabled]).inverse.flat:focus:not(:active), .neutral:not([disabled]).inverse.toggle:focus:not(:active) {
+    background: rgba(33, 33, 33, 0.2); }
+
+.neutral:not([disabled]).inverse.flat:hover {
+  background: rgba(33, 33, 33, 0.2); }
+
+.primary:not([disabled]).raised, .primary:not([disabled]).floating {
+  color: white;
+  background: #3f51b5; }
+
+.primary:not([disabled]).flat, .primary:not([disabled]).toggle {
+  color: #3f51b5; }
+  .primary:not([disabled]).flat:focus:not(:active), .primary:not([disabled]).toggle:focus:not(:active) {
+    background: rgba(63, 81, 181, 0.2); }
+
+.primary:not([disabled]).flat:hover {
+  background: rgba(63, 81, 181, 0.2); }
+
+.accent:not([disabled]).raised, .accent:not([disabled]).floating {
+  color: white;
+  background: #ff4081; }
+
+.accent:not([disabled]).flat, .accent:not([disabled]).toggle {
+  color: #ff4081; }
+  .accent:not([disabled]).flat:focus:not(:active), .accent:not([disabled]).toggle:focus:not(:active) {
+    background: rgba(255, 64, 129, 0.2); }
+
+.accent:not([disabled]).flat:hover {
+  background: rgba(255, 64, 129, 0.2); }
