@@ -12,7 +12,8 @@ class App extends React.Component {
     this.state = {
       start: moment().format('HH:mm'),
       end: moment().add(1, 'hours').format('HH:mm'),
-      todo: 30
+      todo: 30,
+      done: [],
     };
   }
   handleStartChangeBuilder () {
@@ -30,10 +31,18 @@ class App extends React.Component {
       this.setState({ todo: todo })
     }
   }
+  onWatchHandler (doneScreenshot) {
+    this.state.done.push(doneScreenshot)
+    this.setState({
+      done: this.state.done
+    });
+    console.log(doneScreenshot);
+  }
   render () {
     return (
       <div>
-        <TrelloForm />
+        <TrelloForm
+          onWatchHandler={this.onWatchHandler.bind(this)} />
         <PlanningForm
           start={this.state.start}
           end={this.state.end}
@@ -44,7 +53,8 @@ class App extends React.Component {
         <Bdc
           start={this.state.start}
           end={this.state.end}
-          todo={this.state.todo} ></Bdc>
+          todo={this.state.todo}
+          done={this.state.done} ></Bdc>
       </div>
     );
   }

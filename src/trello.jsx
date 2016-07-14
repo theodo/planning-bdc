@@ -1,15 +1,18 @@
 import React from 'react';
+import _ from 'lodash';
 
 import AuthorizeButton from './authorize.jsx';
 import BoardSelector from './board-selector.jsx';
 import ListSelector from './list-selector.jsx';
+import ListWatcher from './list-watcher.jsx';
 
 class TrelloForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       boards: null,
-      lists: null
+      lists: null,
+      watchedListId: null
     };
   }
   getBoards () {
@@ -28,12 +31,16 @@ class TrelloForm extends React.Component {
     }
   }
   watchList (listId) {
+    this.setState({ watchedListId: listId });
     console.log(listId);
   }
   onAuthorizeSuccessHandler () {
     return () => {
       this.getBoards();
     }
+  }
+  onWatchHandler (done) {
+    this.props.onWatchHandler(done);
   }
   render () {
     var boardList = null;
@@ -45,11 +52,17 @@ class TrelloForm extends React.Component {
     if (Array.isArray(this.state.lists)) {
       listList = <ListSelector lists={this.state.lists} onChangeHandler={this.watchList.bind(this)} />;
     }
+
+    var watcher = null;
+    if (_.isString(this.state.watchedListId)) {
+      watcher = <ListWatcher onWatchHandler={this.onWatchHandler.bind(this)} listId={this.state.watchedListId}/>
+    }
     return (
       <div>
         <AuthorizeButton onAuthorizeSuccessHandler={this.onAuthorizeSuccessHandler()} />
         {boardList}
         {listList}
+        {watcher}
       </div>
     );
   }
