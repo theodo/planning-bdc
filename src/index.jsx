@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import PlanningForm from './form.jsx';
 import Bdc from './chart.jsx';
+import TrelloForm from './trello.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
+        <TrelloForm />
         <PlanningForm
           start={this.state.start}
           end={this.state.end}

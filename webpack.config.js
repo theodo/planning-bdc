@@ -1,4 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const autoprefixer = require('autoprefixer');
 
 var config = {
   entry: './src/index.jsx',
@@ -7,23 +9,34 @@ var config = {
     filename: 'app.js'
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.scss']
+    extensions: ['', '.scss', '.css', '.js', '.json'],
+    modulesDirectories: [
+      'node_modules',
+      path.resolve(__dirname, './node_modules')
+    ]
   },
   module: {
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        loaders: ['babel']
+        loaders: ['babel'],
+        exclude: /(node_modules)/
       },
       {
-        test: /\.scss$/,
-        // loaders: ['style', 'css', 'sass']
-        loader: ExtractTextPlugin.extract('style', 'css!sass')
+        test: /(\.scss|\.css)$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
       }
     ]
   },
+  devServer: {
+    contentBase: './dist'
+  },
+  postcss: [autoprefixer],
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, './app')]
+  },
   plugins: [
-    new ExtractTextPlugin('app.css')
+    new ExtractTextPlugin('app.css', { allChunks: true }),
   ]
 }
 module.exports = config;
