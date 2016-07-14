@@ -88,7 +88,7 @@
 
 	    _this.state = {
 	      start: (0, _moment2.default)().format('HH:mm'),
-	      end: (0, _moment2.default)().add(1, 'hours').format('HH:mm'),
+	      end: (0, _moment2.default)().add(2, 'hours').format('HH:mm'),
 	      todo: 30,
 	      done: []
 	    };
@@ -129,7 +129,6 @@
 	      this.setState({
 	        done: this.state.done
 	      });
-	      console.log(doneScreenshot);
 	    }
 	  }, {
 	    key: 'render',

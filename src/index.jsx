@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       start: moment().format('HH:mm'),
-      end: moment().add(1, 'hours').format('HH:mm'),
+      end: moment().add(2, 'hours').format('HH:mm'),
       todo: 30,
       done: [],
     };
@@ -36,7 +36,6 @@ class App extends React.Component {
     this.setState({
       done: this.state.done
     });
-    console.log(doneScreenshot);
   }
   render () {
     return (
