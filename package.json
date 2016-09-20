@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "watch": "webpack-dev-server"
+    "watch": "webpack-dev-server",
+    "start": "webpack-dev-server"
   },
   "babel": {
     "presets": [
@@ -27,13 +28,19 @@
   },
   "homepage": "https://github.com/theodo/planning-bdc#readme",
   "dependencies": {
+    "immutability-helper": "2.0.0",
+    "immutable": "3.8.1",
     "jquery": "3.1.0",
     "lodash": "4.13.1",
     "moment": "2.14.1",
+    "normalize.css": "4.2.0",
     "react": "^15.2.0",
+    "react-addons-css-transition-group": "15.3.2",
     "react-dom": "^15.2.1",
     "react-highcharts": "9.0.0",
+    "react-redux": "4.4.5",
     "react-toolbox": "^1.0.2",
+    "redux": "3.6.0",
     "webpack": "^1.13.1"
   },
   "devDependencies": {
