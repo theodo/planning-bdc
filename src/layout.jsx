@@ -9,6 +9,8 @@ import PlanningForm from './form.jsx';
 import Bdc from './chart.jsx';
 import TrelloForm from './trello.jsx';
 
+require('./style.css')
+
 class LayoutTest extends React.Component {
   constructor(props) {
     super(props);
