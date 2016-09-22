@@ -9,13 +9,13 @@ import PlanningForm from './form.jsx';
 import Bdc from './chart.jsx';
 import TrelloForm from './trello.jsx';
 
-require('./style.css')
+import style from './style.scss';
 
 class LayoutTest extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarPinned: false,
+      playground: false,
       start: moment().format('HH:mm'),
       end: moment().add(1, 'hours').format('HH:mm'),
       todo: 30,
@@ -42,42 +42,49 @@ class LayoutTest extends React.Component {
     this.setState({
       done: this.state.done
     });
-    console.log(doneScreenshot);
   }
 
   toggleSidebar = () => {
-    this.setState({ sidebarPinned: !this.state.sidebarPinned });
+    this.setState({ playground: !this.state.playground });
   };
 
   render() {
+    let className = style.root;
+    if (this.state.playground) className += ` ${style['with-playground']}`;
+
     return (
       <Layout>
-        <Panel>
+        <Panel className={className}>
           <AppBar>
-            <Button icon='add' floating accent onClick={this.toggleSidebar} />
           </AppBar>
-          <div style={{ flex: 1, overflowY: 'auto', padding: '1.8rem' }}>
+          <Button
+            accent
+            floating
+            className={style['playground-button']}
+            icon={this.state.playground ? 'close' : 'code'}
+            onClick={this.toggleSidebar}
+          />
+          <div className={style.documentation}>
             <Bdc
               start={this.state.start}
               end={this.state.end}
               todo={this.state.todo}
               done={this.state.done} ></Bdc>
           </div>
+          <aside className={style.playground} ref='playground'>
+            <div style={{ flex: 1 }}>
+              <TrelloForm
+                onWatchHandler={this.onWatchHandler.bind(this)} />
+              <PlanningForm
+                start={this.state.start}
+                end={this.state.end}
+                todo={this.state.todo}
+                onStartChangeHandler={this.handleStartChangeBuilder()}
+                onEndChangeHandler={this.handleEndChangeBuilder()}
+                onTodoChangeHandler={this.handleTodoChangeBuilder()} />
+            </div>
+          </aside>
         </Panel>
-        <Sidebar pinned={ this.state.sidebarPinned } width={ 5 }>
-          <div><IconButton icon='close' onClick={ this.toggleSidebar }/></div>
-          <div style={{ flex: 1 }}>
-            <TrelloForm
-              onWatchHandler={this.onWatchHandler.bind(this)} />
-            <PlanningForm
-              start={this.state.start}
-              end={this.state.end}
-              todo={this.state.todo}
-              onStartChangeHandler={this.handleStartChangeBuilder()}
-              onEndChangeHandler={this.handleEndChangeBuilder()}
-              onTodoChangeHandler={this.handleTodoChangeBuilder()} />
-          </div>
-        </Sidebar>
       </Layout>
     );
   }
