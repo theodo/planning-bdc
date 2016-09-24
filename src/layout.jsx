@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import { Layout, Panel, Sidebar, Checkbox, IconButton, AppBar } from 'react-toolbox';
+import { Layout, Panel, Sidebar, Checkbox, IconButton } from 'react-toolbox';
 import { Button } from 'react-toolbox/lib/button';
 
 import moment from 'moment';
@@ -8,6 +8,7 @@ import moment from 'moment';
 import PlanningForm from './form.jsx';
 import Bdc from './chart.jsx';
 import TrelloForm from './trello.jsx';
+import Header from './header.jsx';
 
 import 'react-toolbox/lib/commons.scss';
 import style from './style.scss';
@@ -56,8 +57,7 @@ class LayoutTest extends React.Component {
     return (
       <Layout>
         <Panel className={className}>
-          <AppBar>
-          </AppBar>
+          <Header />
           <Button
             accent
             floating
