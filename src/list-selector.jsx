@@ -1,30 +1,31 @@
 import React from 'react';
 
-import Dropdown from 'react-toolbox/lib/dropdown';
+import Autocomplete from 'react-toolbox/lib/autocomplete';
 
 class ListSelector extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: null }
+    this.state = { value: '' }
   }
   onChangeHandler (value) {
     this.props.onChangeHandler(value);
     this.setState({ value: value });
   }
   render () {
-    const items = this.props.lists.map((list) => {
-      return {
-        label: list.name,
-        value: list.id
-      }
+    var items = {};
+    this.props.lists.forEach((list) => {
+      items[list.id] = list.name;
     });
     return (
-      <Dropdown
-        auto
-        label='Select the list to watch'
+      <Autocomplete
+        direction="down"
+        multiple={false}
+        selectedPosition="above"
+        label="Select the list to watch"
         onChange={this.onChangeHandler.bind(this)}
         source={items}
-        value={this.state.value} />
+        value={this.state.value}
+      />
     );
   }
 }

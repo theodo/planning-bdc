@@ -9,7 +9,7 @@ var config = {
     filename: 'app.js'
   },
   resolve: {
-    extensions: ['', '.scss', '.css', '.js', '.json'],
+    extensions: ['', '.scss', '.js', '.json'],
     modulesDirectories: [
       'node_modules',
       path.resolve(__dirname, './node_modules')
@@ -24,7 +24,7 @@ var config = {
       },
       {
         test: /(\.scss|\.css)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
       }
     ]
   },
@@ -32,9 +32,6 @@ var config = {
     contentBase: './dist'
   },
   postcss: [autoprefixer],
-  sassLoader: {
-    includePaths: [path.resolve(__dirname, './app')]
-  },
   plugins: [
     new ExtractTextPlugin('app.css', { allChunks: true }),
   ]

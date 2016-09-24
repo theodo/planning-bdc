@@ -9,6 +9,7 @@ import PlanningForm from './form.jsx';
 import Bdc from './chart.jsx';
 import TrelloForm from './trello.jsx';
 
+import 'react-toolbox/lib/commons.scss';
 import style from './style.scss';
 
 class LayoutTest extends React.Component {
