@@ -1,23 +1,22 @@
 import React from 'react';
 import {Input} from 'react-toolbox/lib/input';
 import {Button} from 'react-toolbox/lib/button';
+import TimePicker from 'react-toolbox/lib/time_picker';
 
 class PlanningForm extends React.Component {
   render () {
     return (
       <div>
-        <Input
-          label="Start"
-          name="start"
-          type="time"
+        <TimePicker
+          label='Starting Time'
+          onChange={this.props.onStartChangeHandler}
           value={this.props.start}
-          onChange={this.props.onStartChangeHandler} />
-        <Input
-          label="End"
-          name="end"
-          type="time"
+        />
+        <TimePicker
+          label='Expected Finishing Time'
+          onChange={this.props.onEndChangeHandler}
           value={this.props.end}
-          onChange={this.props.onEndChangeHandler} />
+        />
         <Input
           label="Todo"
           name="todo"

@@ -18,8 +18,8 @@ class LayoutTest extends React.Component {
     super(props);
     this.state = {
       playground: false,
-      start: moment().format('HH:mm'),
-      end: moment().add(1, 'hours').format('HH:mm'),
+      start: moment().toDate(),
+      end: moment().add(1, 'hours').toDate(),
       todo: 30,
       done: [],
     };

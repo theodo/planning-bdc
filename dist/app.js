@@ -106,8 +106,8 @@
 
 	    _this.state = {
 	      playground: false,
-	      start: (0, _moment2.default)().format('HH:mm'),
-	      end: (0, _moment2.default)().add(1, 'hours').format('HH:mm'),
+	      start: (0, _moment2.default)().toDate(),
+	      end: (0, _moment2.default)().add(1, 'hours').toDate(),
 	      todo: 30,
 	      done: []
 	    };
@@ -50452,6 +50452,10 @@
 
 	var _button = __webpack_require__(173);
 
+	var _time_picker = __webpack_require__(380);
+
+	var _time_picker2 = _interopRequireDefault(_time_picker);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50475,18 +50479,16 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_input.Input, {
-	          label: 'Start',
-	          name: 'start',
-	          type: 'time',
-	          value: this.props.start,
-	          onChange: this.props.onStartChangeHandler }),
-	        _react2.default.createElement(_input.Input, {
-	          label: 'End',
-	          name: 'end',
-	          type: 'time',
-	          value: this.props.end,
-	          onChange: this.props.onEndChangeHandler }),
+	        _react2.default.createElement(_time_picker2.default, {
+	          label: 'Starting Time',
+	          onChange: this.props.onStartChangeHandler,
+	          value: this.props.start
+	        }),
+	        _react2.default.createElement(_time_picker2.default, {
+	          label: 'Expected Finishing Time',
+	          onChange: this.props.onEndChangeHandler,
+	          value: this.props.end
+	        }),
 	        _react2.default.createElement(_input.Input, {
 	          label: 'Todo',
 	          name: 'todo',
