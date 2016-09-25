@@ -65,7 +65,7 @@ class Bdc extends React.Component {
   }
   render () {
     return (
-      <ReactHighcharts config={this.getConfig()} ref="chart" domProps={{style: {height: '100%'} }}></ReactHighcharts>
+      <ReactHighcharts config={this.getConfig()} ref="chart" domProps={{style: {height: '100%', width: '100vw'} }}></ReactHighcharts>
     );
   }
 }

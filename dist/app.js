@@ -57226,7 +57226,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(_reactHighcharts2.default, { config: this.getConfig(), ref: 'chart', domProps: { style: { height: '100%' } } });
+	      return _react2.default.createElement(_reactHighcharts2.default, { config: this.getConfig(), ref: 'chart', domProps: { style: { height: '100%', width: '100vw' } } });
 	    }
 	  }]);
 
