@@ -60,7 +60,9 @@ class PlanningApp extends React.Component {
     return (
       <Layout>
         <Panel className={className}>
-          <Header />
+          <Header
+            end={this.state.end}
+          />
           <Button
             accent
             floating

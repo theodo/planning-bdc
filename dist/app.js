@@ -28108,13 +28108,13 @@
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _action_creators = __webpack_require__(539);
+	var _action_creators = __webpack_require__(540);
 
 	var actionCreators = _interopRequireWildcard(_action_creators);
 
-	__webpack_require__(540);
+	__webpack_require__(541);
 
-	var _style = __webpack_require__(541);
+	var _style = __webpack_require__(542);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -28197,7 +28197,9 @@
 	        _react2.default.createElement(
 	          _reactToolbox.Panel,
 	          { className: className },
-	          _react2.default.createElement(_header2.default, null),
+	          _react2.default.createElement(_header2.default, {
+	            end: this.state.end
+	          }),
 	          _react2.default.createElement(_button.Button, {
 	            accent: true,
 	            floating: true,
@@ -74520,6 +74522,10 @@
 
 	var _link2 = _interopRequireDefault(_link);
 
+	var _timer = __webpack_require__(539);
+
+	var _timer2 = _interopRequireDefault(_timer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -74567,7 +74573,8 @@
 	      return _react2.default.createElement(
 	        _reactToolbox.AppBar,
 	        null,
-	        extensionButton
+	        extensionButton,
+	        _react2.default.createElement(_timer2.default, { end: this.props.end })
 	      );
 	    }
 	  }]);
@@ -74579,6 +74586,95 @@
 
 /***/ },
 /* 539 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(34);
+
+	var _moment = __webpack_require__(424);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Timer = function (_React$Component) {
+	  _inherits(Timer, _React$Component);
+
+	  function Timer(props) {
+	    _classCallCheck(this, Timer);
+
+	    var _this = _possibleConstructorReturn(this, (Timer.__proto__ || Object.getPrototypeOf(Timer)).call(this, props));
+
+	    _this.state = {
+	      timeToEnd: null,
+	      intervalId: null
+	    };
+	    return _this;
+	  }
+
+	  _createClass(Timer, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(props) {
+	      var _this2 = this;
+
+	      window.clearInterval(this.state.intervalId);
+	      var intervalId = window.setInterval(function (end) {
+	        _this2.setState({ timeToEnd: parseInt(_moment2.default.duration((0, _moment2.default)(end).diff((0, _moment2.default)())).asMinutes()) });
+	      }, 1000, props.end);
+	      this.setState({ intervalId: intervalId });
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this3 = this;
+
+	      var intervalId = window.setInterval(function (end) {
+	        console.log(end);
+	        _this3.setState({ timeToEnd: parseInt(_moment2.default.duration((0, _moment2.default)(end).diff((0, _moment2.default)())).asMinutes()) });
+	      }, 1000, this.props.end);
+	      this.setState({ intervalId: intervalId });
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      window.clearInterval(this.state.intervalId);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'h2',
+	        null,
+	        this.state.timeToEnd,
+	        ' minutes left'
+	      );
+	    }
+	  }]);
+
+	  return Timer;
+	}(_react2.default.Component);
+
+	exports.default = Timer;
+
+/***/ },
+/* 540 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -74594,13 +74690,13 @@
 	}
 
 /***/ },
-/* 540 */
+/* 541 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 541 */
+/* 542 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

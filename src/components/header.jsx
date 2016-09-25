@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 import { AppBar } from 'react-toolbox';
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Link from 'react-toolbox/lib/link';
+import Timer from './timer.jsx';
 
 const TooltipLink = Tooltip(Link);
 
@@ -29,6 +30,7 @@ class Header extends React.Component {
     return (
       <AppBar>
         {extensionButton}
+        <Timer end={this.props.end} />
       </AppBar>
 
     )
