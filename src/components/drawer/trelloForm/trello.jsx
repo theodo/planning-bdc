@@ -15,10 +15,12 @@ class TrelloForm extends React.Component {
       watchedListId: null
     };
   }
-  getBoards () {
-    window.Trello.get('/member/me/boards', (response) => {
-      this.setState({boards: response});
-    });
+  componentWillReceiveProps (props) {
+    if (props.isAuthenticated) {
+      window.Trello.get('/member/me/boards', (response) => {
+        this.setState({boards: response});
+      });
+    }
   }
   getLists () {
     return (boardId) => {
@@ -32,12 +34,6 @@ class TrelloForm extends React.Component {
   }
   watchList (listId) {
     this.setState({ watchedListId: listId });
-    console.log(listId);
-  }
-  onAuthorizeSuccessHandler () {
-    return () => {
-      this.getBoards();
-    }
   }
   onWatchHandler (done) {
     this.props.onWatchHandler(done);
@@ -59,7 +55,10 @@ class TrelloForm extends React.Component {
     }
     return (
       <div>
-        <AuthorizeButton onAuthorizeSuccessHandler={this.onAuthorizeSuccessHandler()} />
+        <AuthorizeButton
+          onSignInSuccess={this.props.onSignInSuccess}
+          isAuthenticated={this.props.isAuthenticated}
+        />
         {boardList}
         {listList}
         {watcher}

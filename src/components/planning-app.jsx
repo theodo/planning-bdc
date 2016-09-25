@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
+import {connect} from 'react-redux';
 import { Layout, Panel, Sidebar, Checkbox, IconButton } from 'react-toolbox';
 import { Button } from 'react-toolbox/lib/button';
 
@@ -10,10 +11,12 @@ import Bdc from './chart.jsx';
 import TrelloForm from './drawer/trelloForm/trello.jsx';
 import Header from './header.jsx';
 
+import * as actionCreators from '../action_creators';
+
 import 'react-toolbox/lib/commons.scss';
 import style from '../style.scss';
 
-class LayoutTest extends React.Component {
+class PlanningApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,7 +78,9 @@ class LayoutTest extends React.Component {
           <aside className={style.playground} ref='playground'>
             <div style={{ flex: 1 }}>
               <TrelloForm
-                onWatchHandler={this.onWatchHandler.bind(this)} />
+                onWatchHandler={this.onWatchHandler.bind(this)}
+                isAuthenticated={this.props.isAuthenticated}
+                onSignInSuccess={this.props.onSignInSuccess} />
               <PlanningForm
                 start={this.state.start}
                 end={this.state.end}
@@ -91,4 +96,10 @@ class LayoutTest extends React.Component {
   }
 }
 
-render(<LayoutTest/>, document.getElementById('app'));
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.get('isAuthenticated')
+  };
+}
+
+export const PlanningAppContainer = connect(mapStateToProps, actionCreators)(PlanningApp);
