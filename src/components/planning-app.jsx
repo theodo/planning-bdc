@@ -5,13 +5,13 @@ import { Button } from 'react-toolbox/lib/button';
 
 import moment from 'moment';
 
-import PlanningForm from './form.jsx';
+import PlanningForm from './drawer/planningForm/form.jsx';
 import Bdc from './chart.jsx';
-import TrelloForm from './trello.jsx';
+import TrelloForm from './drawer/trelloForm/trello.jsx';
 import Header from './header.jsx';
 
 import 'react-toolbox/lib/commons.scss';
-import style from './style.scss';
+import style from '../style.scss';
 
 class LayoutTest extends React.Component {
   constructor(props) {

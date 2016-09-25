@@ -3,7 +3,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 
 var config = {
-  entry: './src/layout.jsx',
+  entry: './src/index.jsx',
   output: {
     path: './dist',
     filename: 'app.js'
