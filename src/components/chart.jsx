@@ -28,7 +28,9 @@ var config = {
       type: 'line',
       data: [],
       marker: {
-        enabled: false
+        enabled: false,
+        radius: 7,
+        symbol: 'circle'
       }
     }
   ]
@@ -60,6 +62,16 @@ class Bdc extends React.Component {
           this.props.todo - doneScreenshot.value
         ])
       });
+      if (config.series[1].data.length > 0) {
+        var last = config.series[1].data[config.series[1].data.length - 1]
+        config.series[1].data[config.series[1].data.length - 1] = {
+          x: last [0],
+          y: last [1],
+          marker: {
+            enabled: true
+          }
+        }
+      }
     }
     return config;
   }

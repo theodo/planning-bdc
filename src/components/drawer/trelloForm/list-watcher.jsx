@@ -45,6 +45,12 @@ class ListWatcher extends React.Component {
       }
       , 60000, this.props.listId
     );
+    this.getColumnPoints(this.props.listId, (points) => {
+      this.props.onWatchHandler({
+        datetime: moment(),
+        value: points
+      });
+    });
     this.setState({ intervalId: intervalId })
   }
   componentWillUnmount () {
@@ -52,7 +58,7 @@ class ListWatcher extends React.Component {
   }
   render () {
     return (
-      <div>Watcher</div>
+      <div></div>
     );
   }
 }

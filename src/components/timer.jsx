@@ -24,7 +24,6 @@ class Timer extends React.Component {
   componentWillMount () {
     const intervalId = window.setInterval(
       (end) => {
-        console.log(end)
         this.setState({timeToEnd: parseInt(moment.duration(moment(end).diff(moment())).asMinutes())})
       }
       , 1000, this.props.end

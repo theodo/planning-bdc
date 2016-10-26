@@ -9,7 +9,6 @@ function authenticateUser(state) {
 }
 
 export default function(state = Map(), action) {
-  console.log(action)
   switch (action.type) {
     case 'SET_STATE':
       return setState(state, action.state);
