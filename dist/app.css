@@ -3135,6 +3135,18 @@
   color: #fff;
   background: rgba(97, 97, 97, 0.9);
   border-radius: 0.2rem; }
+.header__icon___fVScR {
+  font-size: 2.8rem; }
+
+.header__link___EuBJ2:not(:first-child) {
+  margin-left: 1rem; }
+.dialog__body___2lynC p {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  text-align: justify; }
+
+.dialog__body___2lynC p:not(:last-child) {
+  margin-bottom: 1.8rem; }
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -3613,7 +3625,7 @@ html {
 body {
   margin: 0; }
 
-h2 {
+header h2 {
   margin: auto; }
 
 hr {

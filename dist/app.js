@@ -28131,13 +28131,13 @@
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _action_creators = __webpack_require__(568);
+	var _action_creators = __webpack_require__(570);
 
 	var actionCreators = _interopRequireWildcard(_action_creators);
 
-	__webpack_require__(569);
+	__webpack_require__(571);
 
-	var _style = __webpack_require__(570);
+	var _style = __webpack_require__(572);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -75164,9 +75164,25 @@
 
 	var _link2 = _interopRequireDefault(_link);
 
+	var _dialog = __webpack_require__(403);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	var _button = __webpack_require__(200);
+
+	var _button2 = _interopRequireDefault(_button);
+
 	var _timer = __webpack_require__(567);
 
 	var _timer2 = _interopRequireDefault(_timer);
+
+	var _header = __webpack_require__(568);
+
+	var _header2 = _interopRequireDefault(_header);
+
+	var _dialog3 = __webpack_require__(569);
+
+	var _dialog4 = _interopRequireDefault(_dialog3);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -75181,10 +75197,19 @@
 	var Header = function (_React$Component) {
 	  _inherits(Header, _React$Component);
 
-	  function Header() {
+	  function Header(props, context) {
 	    _classCallCheck(this, Header);
 
-	    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props, context));
+
+	    _this.handleToggle = function () {
+	      _this.setState({ active: !_this.state.active });
+	    };
+
+	    _this.state = {
+	      active: false
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Header, [{
@@ -75203,10 +75228,12 @@
 	    key: 'render',
 	    value: function render() {
 	      var extensionButton = null;
+	      var dialogActions = [{ label: "Cancel", onClick: this.handleToggle }];
 	      if (this.isChrome()) {
 	        extensionButton = _react2.default.createElement(TooltipLink, {
 	          href: this.getExtensionLink(),
 	          icon: 'wb_sunny',
+	          theme: _header2.default,
 	          target: '_blank',
 	          tooltipPosition: 'right',
 	          tooltip: 'Keep awake with browser extension' });
@@ -75216,6 +75243,53 @@
 	        _reactToolbox.AppBar,
 	        null,
 	        extensionButton,
+	        _react2.default.createElement(_link2.default, {
+	          onClick: this.handleToggle,
+	          theme: _header2.default,
+	          icon: 'info_outline' }),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            actions: dialogActions,
+	            active: this.state.active,
+	            onEscKeyDown: this.handleToggle,
+	            onOverlayClick: this.handleToggle,
+	            title: 'About BDC Planning',
+	            theme: _dialog4.default
+	          },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { href: 'https://en.wikipedia.org/wiki/Scrum_(software_development)', target: '_blank' },
+	              'Scrum'
+	            ),
+	            ' instruction is to perform a one week sprint planning in maximum two hours. This can be challenging: I\'ve often seen plannings overlaping this timebox.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'BDC Planning is measuring in real time if you\'re on time during your planning. To do so, it watchs a configurable Trello column and sums the estimated card points (it requires using ',
+	            _react2.default.createElement(
+	              'a',
+	              { target: '_blank', href: 'https://chrome.google.com/webstore/detail/scrum-for-trello/jdbcdblgjdpmfninkoogcfpnkjmndgje' },
+	              'Scrum For Trello'
+	            ),
+	            ' extension). The progression is displayed on a ',
+	            _react2.default.createElement(
+	              'a',
+	              { href: 'https://en.wikipedia.org/wiki/Burn_down_chart', target: '_blank' },
+	              'burn down chart'
+	            ),
+	            '.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'If you\'re late you can react to catch up the delay. For example you can ask your teamates to stand up until the delay is catched or you can split the team in several groups so that you plan in parallel. Anyway the idea is to be able to track the team is late so that it can adapt the way of planning.'
+	          )
+	        ),
 	        _react2.default.createElement(_timer2.default, { end: this.props.end })
 	      );
 	    }
@@ -75318,6 +75392,20 @@
 /* 568 */
 /***/ function(module, exports) {
 
+	// removed by extract-text-webpack-plugin
+	module.exports = {"icon":"header__icon___fVScR","link":"header__link___EuBJ2"};
+
+/***/ },
+/* 569 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"body":"dialog__body___2lynC"};
+
+/***/ },
+/* 570 */
+/***/ function(module, exports) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -75331,13 +75419,13 @@
 	}
 
 /***/ },
-/* 569 */
+/* 571 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 570 */
+/* 572 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
