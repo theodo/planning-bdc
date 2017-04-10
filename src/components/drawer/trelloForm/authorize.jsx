@@ -6,7 +6,7 @@ class AuthorizeButton extends React.Component {
   constructor (props) {
     super(props);
     this.state = { hash: null, fullName: null }
-    const trelloToken = window.localStorage.getItem('trello_token')
+    const trelloToken = window.localStorage.getItem('planning_bdc_trello_token')
     if (trelloToken !== null) {
       this.authorize()
     }
